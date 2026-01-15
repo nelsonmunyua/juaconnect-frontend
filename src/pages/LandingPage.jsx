@@ -28,8 +28,8 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-400">
-      <div className="w-full max-w-md p-4">
-        <div className="bg-white p-10 rounded-2xl shadow-2xl">
+      <div className="w-full max-w-xl p-8">
+        <div className="bg-white p-16 rounded-2xl shadow-2xl">
           <h1 className="text-center text-indigo-600 text-4xl font-bold mb-2">JuaConnect</h1>
           <h2 className="text-center text-gray-800 text-2xl font-semibold mb-8">
             {isSignUp ? 'Create Account' : 'Welcome Back'}

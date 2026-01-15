@@ -42,7 +42,7 @@ const AuthForm = ({ isSignUp, onSubmit }) => {
   };
 
   return (
-    <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-10 w-full" onSubmit={handleSubmit}>
       {isSignUp && (
         <div>
           <input
@@ -51,7 +51,7 @@ const AuthForm = ({ isSignUp, onSubmit }) => {
             placeholder="Full Name"
             value={formData.name}
             onChange={handleChange}
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-indigo-600 transition ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
+            className={`w-full px-5 py-5 border rounded-lg focus:outline-none focus:border-indigo-600 transition ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
             required
           />
           {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
