@@ -1,0 +1,119 @@
+/* Availability component styles */
+
+.availability {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: var(--font-sans, Arial, sans-serif);
+  color: var(--text-color, #222);
+}
+
+.availability-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.availability-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  background: transparent;
+}
+
+.day {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border, #e6e6e6);
+  border-radius: 8px;
+  padding: 0.5rem;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.day .day-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.day .slots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  overflow-y: auto;
+  max-height: 8rem;
+  padding-right: 0.25rem;
+}
+
+/* time slot styling */
+.time-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  background: var(--slot-bg, #f7f7f7);
+  border: 1px solid transparent;
+  color: var(--slot-text, #333);
+  font-size: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.time-slot:hover {
+  border-color: var(--accent, #4f46e5);
+  box-shadow: 0 1px 4px rgba(79,70,229,0.08);
+}
+
+/* selected / unavailable states */
+.time-slot.selected {
+  background: var(--accent, #4f46e5);
+  color: #fff;
+  border-color: transparent;
+}
+
+.time-slot.unavailable {
+  background: transparent;
+  color: var(--muted, #9aa0a6);
+  border: 1px dashed var(--muted, #e0e0e0);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* special day markers */
+.day.today {
+  box-shadow: 0 0 0 2px rgba(79,70,229,0.06);
+  border-color: rgba(79,70,229,0.12);
+}
+
+/* compact/summary view */
+.availability-summary {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .availability-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .availability-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .day {
+    min-height: 100px;
+  }
+}
