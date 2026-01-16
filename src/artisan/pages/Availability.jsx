@@ -1,6 +1,6 @@
 // src/artisan/pages/Availability.jsx
 import React, { useState, useEffect } from "react";
-import "/home/user/development/code/phase4/juaconnect-frontend/src/artisan/pages/Availability.css"
+import "/home/user/development/code/phase4/juaconnect-frontend/src/artisan/artisan.css"
 
 const Availability = () => {
   const [availability, setAvailability] = useState(null);
