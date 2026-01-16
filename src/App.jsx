@@ -1,14 +1,9 @@
-// src/App.jsx
-import React from "react";
-import "./App.css";
-import ArtisanRouter from "./artisan/router.jsx";
+import React, {  } from "react";
 
-function App() {
+export default function App() {
   return (
-    <div className="app">
-      <ArtisanRouter />
-    </div>
+    <>
+      
+    </>
   );
 }
-
-export default App;
