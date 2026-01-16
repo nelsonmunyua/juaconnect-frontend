@@ -1,6 +1,6 @@
 // src/artisan/pages/Dashboard.jsx
 import React, { useState, useEffect } from 'react';
-import '../artisan.css';
+import '/home/user/development/code/phase4/juaconnect-frontend/src/artisan/artisan.css';
 
 const Dashboard = () => {
   const [stats, setStats] = useState(null);

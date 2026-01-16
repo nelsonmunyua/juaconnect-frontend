@@ -1,6 +1,6 @@
 // src/artisan/pages/Bookings.jsx
 import React, { useState, useEffect } from "react";
-import "../artisan.css";
+import "/home/user/development/code/phase4/juaconnect-frontend/src/artisan/artisan.css";
 
 const Bookings = () => {
   const [selectedFilter, setSelectedFilter] = useState("all");

@@ -1,6 +1,6 @@
 // src/artisan/pages/Reviews.jsx
 import React, { useState, useEffect } from "react";
-import "../artisan.css";
+import "/home/user/development/code/phase4/juaconnect-frontend/src/artisan/artisan.css";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
