@@ -2,13 +2,45 @@ import React, { useState } from 'react';
 
 function SignIn() {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [password_hash, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = { email, password };
-    console.log(formData);
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await fetch('http://127.0.0.1:5000/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password_hash }), 
+    });
+
+    const result = await response.json();
+    console.log(result)
+
+    if (response.ok) {
+      // Store token and user data securely
+      // localStorage.setItem('authToken', data.token);
+      // localStorage.setItem('user', JSON.stringify(data.user));
+      const role = result.data.role;
+
+
+
+      // Redirect based on role
+      if (role === 'client') {
+        window.location.href = '/client-dashboard';
+      } else if (role === 'artisan') {
+        window.location.href = '/artisan-dashboard';
+      } else {
+        window.location.href = '/'; // fallback
+      }
+    } else {
+      alert(result.message || 'Login failed');
+    }
+  } catch (error) {
+    console.error('Login error:', error);
+    alert('Network error. Please try again.');
+  }
+      
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
@@ -40,7 +72,7 @@ function SignIn() {
             <input
               type="password"
               id="password"
-              value={password}
+              value={password_hash}
               onChange={(e) => setPassword(e.target.value)}
               className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="••••••••"
