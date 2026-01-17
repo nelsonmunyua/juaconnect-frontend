@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div className="flex h-screen">
       <Sidebar activeNav={activeNav} setActiveNav={setActiveNav} onLogout={handleLogout} />
-      <MainContent searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <MainContent activeNav={activeNav} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
     </div>
   );
 };

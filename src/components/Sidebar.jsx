@@ -65,10 +65,13 @@ const Sidebar = ({ activeNav, setActiveNav, onLogout }) => {
       </nav>
 
       <div className="p-4 border-t border-gray-700">
-        <div className="flex items-center space-x-3 mb-4">
+        <button
+          onClick={() => setActiveNav('profile')}
+          className="flex items-center space-x-3 mb-4 cursor-pointer hover:opacity-80"
+        >
           <img src={MOCK_USER.avatar} alt="Avatar" className="w-10 h-10 rounded-full bg-gray-600" />
           <span className="text-white font-medium">{MOCK_USER.name}</span>
-        </div>
+        </button>
         <button
           onClick={onLogout}
           className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white"
