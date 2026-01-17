@@ -11,9 +11,16 @@ const App = () => {
   };
 
   return (
-    <div className="flex h-screen">
-      <Sidebar activeNav={activeNav} setActiveNav={setActiveNav} onLogout={handleLogout} />
-      <MainContent searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+    <div className="flex h-screen bg-gray-900">
+      <Sidebar 
+        activeNav={activeNav} 
+        setActiveNav={setActiveNav} 
+        onLogout={handleLogout} 
+      />
+      <MainContent 
+        searchQuery={searchQuery} 
+        setSearchQuery={setSearchQuery} 
+      />
     </div>
   );
 };
