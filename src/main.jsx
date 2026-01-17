@@ -1,4 +1,3 @@
-// src/main.jsx
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import ReactDOM from "react-dom/client";
@@ -10,6 +9,7 @@ import SignIn from "./components/auth/SignIn.jsx";
 import SignUp from "./components/auth/SignUp.jsx";
 import ArtisanSignUp from "./components/auth/ArtisanSignUp.jsx";
 import ArtisanDashboard from "./components/artisan/ArtisanDashboard.jsx";
+import ClientDashboard from "./components/dashboards/ClientDashboard.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -36,6 +36,10 @@ const routes = createBrowserRouter([
     path: '/artisan-dashboard',
     element: <ArtisanDashboard />
   },
+  {
+    path: '/client-dashboard-alt',
+    element: <ClientDashboard />
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
@@ -44,3 +48,4 @@ createRoot(document.getElementById("root")).render(
     <RouterProvider router={routes} />
   </StrictMode>
 );
+

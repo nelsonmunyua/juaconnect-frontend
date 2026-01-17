@@ -72,3 +72,4 @@ const MainContent = ({ searchQuery, setSearchQuery, activeNav }) => {
 };
 
 export default MainContent;
+

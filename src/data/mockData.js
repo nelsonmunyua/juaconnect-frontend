@@ -33,3 +33,4 @@ export const MOCK_BOOKINGS = [
     status: 'pending'
   }
 ];
+

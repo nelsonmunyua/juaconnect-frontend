@@ -100,3 +100,4 @@ const UpcomingBookings = () => {
 };
 
 export default UpcomingBookings;
+

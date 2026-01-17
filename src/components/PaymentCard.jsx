@@ -82,3 +82,4 @@ const PaymentCard = ({ booking }) => {
 };
 
 export default PaymentCard;
+

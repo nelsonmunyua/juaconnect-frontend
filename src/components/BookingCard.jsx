@@ -170,3 +170,4 @@ const BookingCard = ({ booking, onUpdate }) => {
 };
 
 export default BookingCard;
+
