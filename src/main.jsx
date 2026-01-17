@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/pages/Home.jsx";
 import SignIn from "./components/auth/SignIn.jsx";
 import SignUp from "./components/auth/SignUp.jsx";
-import ArtisanLayout from "./components/artisan/ArtisanLayout.jsx";
+import ClientDashboard from "./components/dashboards/ClientDashboard.jsx";
 
 
 
@@ -28,8 +28,10 @@ const routes = createBrowserRouter([
   },
   {
     path: '/client-dashboard',
-    element: <ArtisanLayout />
-  },
+    element: <ClientDashboard />
+  }
+  
+  
 ]);
 
 createRoot(document.getElementById("root")).render(

@@ -22,7 +22,8 @@ function SignIn() {
       // localStorage.setItem('user', JSON.stringify(data.user));
       const role = result.data.role;
 
-
+      // save user data to localStorage
+      localStorage.setItem('user', JSON.stringify(result.data));
 
       // Redirect based on role
       if (role === 'client') {
