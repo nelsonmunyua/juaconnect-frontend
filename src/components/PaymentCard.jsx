@@ -2,23 +2,78 @@ import React from 'react';
 import { getStatusColor, getStatusText } from '../utils/statusHelpers';
 
 const PaymentCard = ({ booking }) => {
+  const cardStyle = {
+    backgroundColor: '#fff',
+    borderRadius: '8px',
+    padding: '16px',
+    boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+  };
+
+  const headerStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+  };
+
+  const contentStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  };
+
+  const infoStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+  };
+
+  const titleStyle = {
+    fontSize: '16px',
+    fontWeight: '600',
+    color: '#2c3e50',
+    margin: 0,
+  };
+
+  const descStyle = {
+    fontSize: '13px',
+    color: '#7f8c8d',
+    margin: '4px 0 0 0',
+  };
+
+  const priceStyle = {
+    fontSize: '16px',
+    fontWeight: '600',
+    color: '#2c3e50',
+  };
+
+  const statusStyle = {
+    padding: '6px 12px',
+    borderRadius: '6px',
+    backgroundColor: booking.status === 'active' ? '#27ae60' : booking.status === 'paid' ? '#3498db' : '#e67e22',
+    color: '#fff',
+    fontSize: '13px',
+    fontWeight: '500',
+  };
+
   return (
-    <div className="bg-gray-800 rounded-lg p-4 flex items-center justify-between">
-      <div className="flex items-center space-x-4">
+    <div style={cardStyle}>
+      <div style={headerStyle}>
         <img
           src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${booking.artisan}`}
           alt={booking.artisan}
-          className="w-12 h-12 rounded-full bg-gray-600"
+          style={{ width: '48px', height: '48px', borderRadius: '50%' }}
         />
-        <div>
-          <h3 className="text-white font-semibold">{booking.service}</h3>
-          <p className="text-gray-400 text-sm">{booking.artisan} · {booking.description}</p>
+        <div style={infoStyle}>
+          <p style={titleStyle}>{booking.service}</p>
+          <p style={descStyle}>{booking.artisan} · {booking.description}</p>
         </div>
       </div>
 
-      <div className="flex items-center space-x-4">
-        <p className="text-white font-semibold">${booking.price}</p>
-        <div className={`${getStatusColor(booking.status)} text-white px-4 py-2 rounded-lg`}>
+      <div style={contentStyle}>
+        <p style={priceStyle}>${booking.price}</p>
+        <div style={statusStyle}>
           {getStatusText(booking.status)}
         </div>
       </div>

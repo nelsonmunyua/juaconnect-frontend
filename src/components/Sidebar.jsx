@@ -3,77 +3,113 @@ import { Home, Calendar, CreditCard, Bell, User, LogOut } from 'lucide-react';
 import { MOCK_USER } from '../data/mockData';
 
 const Sidebar = ({ activeNav, setActiveNav, onLogout }) => {
+  const navItems = [
+    { id: 'dashboard', label: 'Dashboard', icon: Home },
+    { id: 'bookings', label: 'Bookings', icon: Calendar },
+    { id: 'payments', label: 'Payments', icon: CreditCard },
+    { id: 'notifications', label: 'Notifications', icon: Bell },
+    { id: 'profile', label: 'Profile', icon: User },
+  ];
+
+  const sidebarStyle = {
+    width: '250px',
+    backgroundColor: '#2c3e50',
+    color: '#fff',
+    display: 'flex',
+    flexDirection: 'column',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+  };
+
+  const headerStyle = {
+    padding: '24px',
+    borderBottom: '1px solid #34495e',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+  };
+
+  const navStyle = {
+    flex: 1,
+    padding: '16px',
+    overflowY: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+  };
+
+  const navButtonStyle = (isActive) => ({
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    padding: '12px 16px',
+    border: 'none',
+    borderRadius: '6px',
+    backgroundColor: isActive ? '#3498db' : 'transparent',
+    color: isActive ? '#fff' : '#bdc3c7',
+    cursor: 'pointer',
+    fontSize: '14px',
+    fontWeight: '500',
+    transition: 'all 0.2s',
+  });
+
+  const footerStyle = {
+    padding: '16px',
+    borderTop: '1px solid #34495e',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+  };
+
+  const userStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+  };
+
   return (
-    <aside className="w-64 bg-gray-800 flex flex-col">
-      <div className="p-6 border-b border-gray-700">
-        <div className="flex items-center space-x-2">
-          <Home className="w-8 h-8 text-emerald-500" />
-          <span className="text-xl font-bold text-white">Dashboard</span>
-        </div>
+    <aside style={sidebarStyle}>
+      <div style={headerStyle}>
+        <Home size={28} color="#3498db" />
+        <span style={{ fontSize: '18px', fontWeight: 'bold' }}>JuaConnect</span>
       </div>
 
-      <nav className="flex-1 p-4 space-y-2">
-        <button
-          onClick={() => setActiveNav('dashboard')}
-          className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg ${
-            activeNav === 'dashboard' ? 'bg-gray-700 text-white' : 'text-gray-400 hover:bg-gray-700 hover:text-white'
-          }`}
-        >
-          <Home className="w-5 h-5" />
-          <span>Dashboard</span>
-        </button>
-
-        <button
-          onClick={() => setActiveNav('bookings')}
-          className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg ${
-            activeNav === 'bookings' ? 'bg-gray-700 text-white' : 'text-gray-400 hover:bg-gray-700 hover:text-white'
-          }`}
-        >
-          <Calendar className="w-5 h-5" />
-          <span>Bookings</span>
-        </button>
-
-        <button
-          onClick={() => setActiveNav('payments')}
-          className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg ${
-            activeNav === 'payments' ? 'bg-gray-700 text-white' : 'text-gray-400 hover:bg-gray-700 hover:text-white'
-          }`}
-        >
-          <CreditCard className="w-5 h-5" />
-          <span>Payments</span>
-        </button>
-
-        <button
-          onClick={() => setActiveNav('notifications')}
-          className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg ${
-            activeNav === 'notifications' ? 'bg-gray-700 text-white' : 'text-gray-400 hover:bg-gray-700 hover:text-white'
-          }`}
-        >
-          <Bell className="w-5 h-5" />
-          <span>Notifications</span>
-        </button>
-
-        <button
-          onClick={() => setActiveNav('profile')}
-          className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg ${
-            activeNav === 'profile' ? 'bg-gray-700 text-white' : 'text-gray-400 hover:bg-gray-700 hover:text-white'
-          }`}
-        >
-          <User className="w-5 h-5" />
-          <span>Profile</span>
-        </button>
+      <nav style={navStyle}>
+        {navItems.map(item => {
+          const IconComponent = item.icon;
+          return (
+            <button
+              key={item.id}
+              onClick={() => setActiveNav(item.id)}
+              style={navButtonStyle(activeNav === item.id)}
+              onMouseEnter={(e) => {
+                if (activeNav !== item.id) {
+                  e.target.style.backgroundColor = '#34495e';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeNav !== item.id) {
+                  e.target.style.backgroundColor = 'transparent';
+                }
+              }}
+            >
+              <IconComponent size={20} />
+              <span>{item.label}</span>
+            </button>
+          );
+        })}
       </nav>
 
-      <div className="p-4 border-t border-gray-700">
-        <div className="flex items-center space-x-3 mb-4">
-          <img src={MOCK_USER.avatar} alt="Avatar" className="w-10 h-10 rounded-full bg-gray-600" />
-          <span className="text-white font-medium">{MOCK_USER.name}</span>
+      <div style={footerStyle}>
+        <div style={userStyle}>
+          <img src={MOCK_USER.avatar} alt="Avatar" style={{ width: '40px', height: '40px', borderRadius: '50%' }} />
+          <span style={{ fontSize: '14px', fontWeight: '500' }}>{MOCK_USER.name}</span>
         </div>
         <button
           onClick={onLogout}
-          className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white"
+          style={{...navButtonStyle(false), color: '#e74c3c'}}
         >
-          <LogOut className="w-5 h-5" />
+          <LogOut size={20} />
           <span>Logout</span>
         </button>
       </div>
