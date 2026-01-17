@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/pages/Home.jsx";
 import SignIn from "./components/auth/SignIn.jsx";
 import SignUp from "./components/auth/SignUp.jsx";
+import ArtisanLayout from "./components/artisan/ArtisanLayout.jsx";
 
 
 
@@ -25,7 +26,10 @@ const routes = createBrowserRouter([
     path: '/signup',
     element: <SignUp />
   },
-  
+  {
+    path: '/client-dashboard',
+    element: <ArtisanLayout />
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(

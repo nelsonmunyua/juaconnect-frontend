@@ -1,7 +1,7 @@
 // src/artisan/Sidebar.jsx
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import "/src/artisan/artisan.css";
+import "/home/nelson/development/code/phase4/juaconnect-frontend/src/components/artisan/artisan.css";
 
 const Sidebar = ({ artisan }) => {
   const navigate = useNavigate();
