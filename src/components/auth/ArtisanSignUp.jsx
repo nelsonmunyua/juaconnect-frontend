@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import api from '../../services/api';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../../services/api";
 
 export default function ArtisanSignUp() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    phone: '',
-    service_category: '',
-    experience_years: '',
-    location: '',
-    bio: '',
+    username: "",
+    email: "",
+    password: "",
+    phone: "",
+    service_category: "",
+    experience_years: "",
+    location: "",
+    bio: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
@@ -23,12 +23,13 @@ export default function ArtisanSignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
       const response = await api.register({
         username: formData.username,
+        name: formData.username,
         email: formData.email,
         password: formData.password,
         phone: formData.phone,
@@ -36,64 +37,64 @@ export default function ArtisanSignUp() {
         experience_years: parseInt(formData.experience_years),
         location: formData.location,
         bio: formData.bio,
-        user_type: 'artisan'
+        user_type: "artisan",
       });
 
       if (response.success) {
-        alert('Welcome! Your artisan profile has been created.');
-        navigate('/artisan-dashboard');
+        alert("Welcome! Your artisan profile has been created.");
+        navigate("/artisan-dashboard");
       } else {
-        setError(response.message || 'Signup failed');
+        setError(response.message || "Signup failed");
       }
     } catch (err) {
-      setError(err.message || 'An error occurred during signup');
+      setError(err.message || "An error occurred during signup");
     } finally {
       setLoading(false);
     }
   };
 
   const containerStyle = {
-    minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#f5f5f5',
-    padding: '20px',
+    minHeight: "100vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#f5f5f5",
+    padding: "20px",
   };
 
   const cardStyle = {
-    backgroundColor: '#fff',
-    borderRadius: '8px',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    padding: '40px',
-    maxWidth: '500px',
-    width: '100%',
+    backgroundColor: "#fff",
+    borderRadius: "8px",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+    padding: "40px",
+    maxWidth: "500px",
+    width: "100%",
   };
 
   const titleStyle = {
-    fontSize: '28px',
-    fontWeight: 'bold',
-    color: '#2c3e50',
-    marginBottom: '8px',
-    textAlign: 'center',
+    fontSize: "28px",
+    fontWeight: "bold",
+    color: "#2c3e50",
+    marginBottom: "8px",
+    textAlign: "center",
   };
 
   const subtitleStyle = {
-    fontSize: '14px',
-    color: '#7f8c8d',
-    textAlign: 'center',
-    marginBottom: '32px',
+    fontSize: "14px",
+    color: "#7f8c8d",
+    textAlign: "center",
+    marginBottom: "32px",
   };
 
   const formStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '12px',
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
   };
 
   const groupStyle = {
-    display: 'flex',
-    gap: '12px',
+    display: "flex",
+    gap: "12px",
   };
 
   const inputContainerStyle = {
@@ -101,48 +102,48 @@ export default function ArtisanSignUp() {
   };
 
   const labelStyle = {
-    display: 'block',
-    fontSize: '13px',
-    fontWeight: '600',
-    color: '#2c3e50',
-    marginBottom: '6px',
+    display: "block",
+    fontSize: "13px",
+    fontWeight: "600",
+    color: "#2c3e50",
+    marginBottom: "6px",
   };
 
   const inputStyle = {
-    width: '100%',
-    padding: '10px 12px',
-    border: '1px solid #bdc3c7',
-    borderRadius: '6px',
-    fontSize: '14px',
-    fontFamily: 'inherit',
-    boxSizing: 'border-box',
+    width: "100%",
+    padding: "10px 12px",
+    border: "1px solid #bdc3c7",
+    borderRadius: "6px",
+    fontSize: "14px",
+    fontFamily: "inherit",
+    boxSizing: "border-box",
   };
 
   const submitStyle = {
-    backgroundColor: '#3498db',
-    color: '#fff',
-    padding: '12px',
-    border: 'none',
-    borderRadius: '6px',
-    fontWeight: '600',
-    fontSize: '16px',
-    cursor: 'pointer',
-    marginTop: '16px',
-    transition: 'all 0.3s',
+    backgroundColor: "#3498db",
+    color: "#fff",
+    padding: "12px",
+    border: "none",
+    borderRadius: "6px",
+    fontWeight: "600",
+    fontSize: "16px",
+    cursor: "pointer",
+    marginTop: "16px",
+    transition: "all 0.3s",
   };
 
   const linkStyle = {
-    textAlign: 'center',
-    marginTop: '16px',
-    fontSize: '14px',
-    color: '#7f8c8d',
+    textAlign: "center",
+    marginTop: "16px",
+    fontSize: "14px",
+    color: "#7f8c8d",
   };
 
   const linkButtonStyle = {
-    color: '#3498db',
-    textDecoration: 'none',
-    cursor: 'pointer',
-    fontWeight: '600',
+    color: "#3498db",
+    textDecoration: "none",
+    cursor: "pointer",
+    fontWeight: "600",
   };
 
   return (
@@ -152,7 +153,16 @@ export default function ArtisanSignUp() {
         <p style={subtitleStyle}>Join our network of skilled professionals</p>
 
         {error && (
-          <div style={{ backgroundColor: '#fee', color: '#c33', padding: '10px', borderRadius: '4px', marginBottom: '16px', fontSize: '14px' }}>
+          <div
+            style={{
+              backgroundColor: "#fee",
+              color: "#c33",
+              padding: "10px",
+              borderRadius: "4px",
+              marginBottom: "16px",
+              fontSize: "14px",
+            }}
+          >
             {error}
           </div>
         )}
@@ -261,7 +271,7 @@ export default function ArtisanSignUp() {
               name="bio"
               value={formData.bio}
               onChange={handleInputChange}
-              style={{ ...inputStyle, minHeight: '80px', resize: 'vertical' }}
+              style={{ ...inputStyle, minHeight: "80px", resize: "vertical" }}
               placeholder="Tell us about your skills and experience..."
             />
           </div>
@@ -270,19 +280,20 @@ export default function ArtisanSignUp() {
             type="submit"
             disabled={loading}
             style={{ ...submitStyle, opacity: loading ? 0.6 : 1 }}
-            onMouseEnter={(e) => !loading && (e.target.style.backgroundColor = '#2980b9')}
-            onMouseLeave={(e) => !loading && (e.target.style.backgroundColor = '#3498db')}
+            onMouseEnter={(e) =>
+              !loading && (e.target.style.backgroundColor = "#2980b9")
+            }
+            onMouseLeave={(e) =>
+              !loading && (e.target.style.backgroundColor = "#3498db")
+            }
           >
-            {loading ? 'Creating Profile...' : 'Create Artisan Profile'}
+            {loading ? "Creating Profile..." : "Create Artisan Profile"}
           </button>
         </form>
 
         <div style={linkStyle}>
-          Already registered?{' '}
-          <button
-            style={linkButtonStyle}
-            onClick={() => navigate('/signin')}
-          >
+          Already registered?{" "}
+          <button style={linkButtonStyle} onClick={() => navigate("/signin")}>
             Sign In
           </button>
         </div>
