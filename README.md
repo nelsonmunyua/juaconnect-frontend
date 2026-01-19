@@ -71,7 +71,8 @@ The application uses a combination of:
 - Nicole Kibe
 - Joyce Njogu
 
-
+## Backend repo
+https://github.com/nelsonmunyua/juaconnect-backend
 
 ## License
 
